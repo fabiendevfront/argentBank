@@ -1,0 +1,28 @@
+/**********/
+/* FONTS */
+/*********/
+
+$font-default: 'Roboto', sans-serif;
+
+/***********/
+/* COLORS */
+/**********/
+
+$primary-color: #FF0101;
+$white: #ffffff;
+$black: #000000;
+
+/*********/
+/* Size */
+/********/
+
+
+/***************/
+/* RESPONSIVE */
+/**************/
+
+// 1.Breakpoints map for responsive
+$breakpoints: (
+    medium: 1024px,
+    small: 768px
+);
