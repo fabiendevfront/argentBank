@@ -1,13 +1,18 @@
+
+import SignInForm from "../components/SignInForm";
+
 /**
-* Component for Dashboard page
+* Component for Sign In page
 * @component
 * @returns {JSX.Element}
 */
 const SignIn = () => {
     return (
-        <>
-            <h2>Sign-In</h2>
-        </>
+        <div className="sign-in">
+            <div className="sign-in__form">
+                <SignInForm />
+            </div>
+        </div>
     );
 };
 

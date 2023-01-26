@@ -16,12 +16,15 @@
 
 body {
     margin: 0;
+}
+
+.app {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-.main {
+main {
     flex: 1;
 }
 
@@ -43,4 +46,12 @@ li {
     -webkit-clip-path: inset(50%) !important;
     clip-path: inset(50%) !important;
     white-space: nowrap !important;
-  }
+}
+
+.bg-dark {
+    background-color: variables.$bg-dark;
+}
+
+.bg-white {
+    background-color: variables.$white;
+}
