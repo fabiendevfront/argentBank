@@ -22,14 +22,14 @@
 
 // 1. Contain media queries for medium screen
 @mixin medium-break {
-    @media screen and (max-width: map-get(variables.$breakpoints, medium)) {
+    @media screen and (min-width: map-get(variables.$breakpoints, medium)) {
         @content;
     }
 }
 
 // 2. Contain media queries for small screen
 @mixin small-break {
-    @media screen and (max-width: map-get(variables.$breakpoints, small)) {
+    @media screen and (min-width: map-get(variables.$breakpoints, small)) {
         @content;
     }
 }

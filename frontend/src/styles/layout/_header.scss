@@ -1,0 +1,33 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+
+    &__link-logo {
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo {
+        max-width: 100%;
+        width: 200px;
+    }
+
+    &__link-nav {
+        color: variables.$secondary-color;
+        font-weight: bold;
+        margin-right: 0.5rem;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__icon {
+        margin-right: 5px;
+    }
+}

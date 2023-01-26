@@ -2,15 +2,19 @@
 /* FONTS */
 /*********/
 
-$font-default: 'Roboto', sans-serif;
+$font-default: Avenir, Helvetica, Arial, sans-serif;
 
 /***********/
 /* COLORS */
 /**********/
 
-$primary-color: #FF0101;
+$primary-color: #00bc77;
+$secondary-color: #2c3e50;
+$bg-dark: #12002b;
+$footer-border: #ccc;
 $white: #ffffff;
 $black: #000000;
+$title: #222;
 
 /*********/
 /* Size */
@@ -23,6 +27,6 @@ $black: #000000;
 
 // 1.Breakpoints map for responsive
 $breakpoints: (
-    medium: 1024px,
-    small: 768px
+    medium: 920px,
+    small: 720px
 );

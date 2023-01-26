@@ -1,0 +1,21 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.home {
+    .hero-banner {
+        height: 300px;
+
+        @include mixins.medium-break {
+            height: 400px;
+        }
+    }
+
+    &__features {
+        display: flex;
+        flex-direction: column;
+
+        @include mixins.medium-break {
+            flex-direction: row;
+        }
+    }
+}
