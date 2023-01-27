@@ -1,3 +1,7 @@
+import { accounts } from "../data/accounts";
+import Button from "../components/Button";
+import AccountCard from "../components/AccountCard";
+
 /**
 * Component for Dashboard page
 * @component
@@ -5,9 +9,16 @@
 */
 const Dashboard = () => {
     return (
-        <>
-            <h2>Dashboard</h2>
-        </>
+        <div className="dashboard">
+            <div className="dashboard__head">
+                <h2 className="dashboard__title">Welcome back<br />Tony Jarvis!</h2>
+                <Button label="Edit Name" />
+            </div>
+
+            {accounts.map((account) =>
+                <AccountCard key={account.id} title={account.title} amount={account.amount} desc={account.desc} />
+            )}
+        </div>
     );
 };
 
