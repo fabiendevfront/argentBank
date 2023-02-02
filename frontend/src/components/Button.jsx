@@ -7,9 +7,9 @@ import PropTypes from "prop-types";
  * @param {string} props.label - The label of the button
  * @returns {JSX.Element}
  */
-const Button = ({ label }) => {
+const Button = ({ label, onClick }) => {
     return (
-        <button className="btn">{label}</button>
+        <button className="btn" onClick={onClick}>{label}</button>
     );
 };
 

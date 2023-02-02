@@ -1,11 +1,17 @@
+import { useDispatch, useSelector } from "react-redux";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
+import { signOut } from "../redux/userSlice";
 
 /**
  * The Header component returns JSX element.
  * @returns {JSX.Element}
  */
 const Header = () => {
+    useSelector((state) => console.log(state));
+    const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+
     return (
         <header className="header">
             <Link to="/" className="header__link-logo">
@@ -13,10 +19,16 @@ const Header = () => {
                 <h1 className="sr-only">Argent Bank</h1>
             </Link>
             <nav className="header__nav">
-                <Link to="/sign-in" className="header__link-nav">
+                <Link to={user.signin ? `/dashboard/${user.id}` : "/sign-in"} className="header__link-nav">
                     <i className="fa fa-user-circle header__icon"></i>
-                    Sign In
+                    { user.signin ? `${user.firstName}` : "Sign In" }
                 </Link>
+                { user.signin ? (
+                    <Link to="/" className="header__link-nav" onClick={() => dispatch(signOut(user))}>
+                        <i className="fa fa-sign-out"></i>
+                            Sign Out
+                    </Link>
+                ) : "" }
             </nav>
         </header>
     );

@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 const Error404 = () => {
     return (
         <div className="error-404">
-            <h2 className="error-404__title">Oups! La page que vous demandez n'existe pas</h2>
-            <Link to="/" className="error-404__link">Retourner sur la page d'accueil</Link>
+            <h2 className="error-404__title">Oups! The page you request does not exist</h2>
+            <Link to="/" className="error-404__link">Go to the home page</Link>
         </div>
     );
 };

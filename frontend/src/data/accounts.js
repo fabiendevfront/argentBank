@@ -1,20 +1,54 @@
 export const accounts = [
     {
-        "id": 0,
-        "title": "Argent Bank Checking (x8349)",
-        "amount": "$2,082.79",
-        "desc": "Available Balance"
+        "userId": "63d3e3554fdc241438335960",
+        "transactions": [
+            {
+                "id": 0,
+                "title": "Argent Bank Checking (x8349)",
+                "amount": "$2,082.79",
+                "desc": "Available Balance"
+            },
+            {
+                "id": 1,
+                "title": "Argent Bank Savings (x6712)",
+                "amount": "$10,928.42",
+                "desc": "Available Balance"
+            },
+            {
+                "id": 2,
+                "title": "Argent Bank Credit Card (x8349)",
+                "amount": "$184.30",
+                "desc": "Current Balance"
+            }
+        ]
     },
     {
-        "id": 1,
-        "title": "Argent Bank Savings (x6712)",
-        "amount": "$10,928.42",
-        "desc": "Available Balance"
+        "userId": "63d3e3554fdc24143833595f",
+        "transactions": [
+            {
+                "id": 0,
+                "title": "Argent Bank Credit Card (x8349)",
+                "amount": "$1,055.80",
+                "desc": "Available Balance"
+            },
+            {
+                "id": 1,
+                "title": "Argent Bank Checking (x6712)",
+                "amount": "$500",
+                "desc": "Available Balance"
+            },
+            {
+                "id": 2,
+                "title": "Argent Bank Credit Card (x8349)",
+                "amount": "$205.30",
+                "desc": "Current Balance"
+            },
+            {
+                "id": 3,
+                "title": "Argent Bank Credit Card (x8349)",
+                "amount": "$1,225.40",
+                "desc": "Current Balance"
+            }
+        ]
     },
-    {
-        "id": 2,
-        "title": "Argent Bank Credit Card (x8349)",
-        "amount": "$184.30",
-        "desc": "Current Balance"
-    }
 ];
