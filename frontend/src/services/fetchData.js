@@ -30,3 +30,25 @@ export const getProfil = async (token) => {
         console.error(error);
     }
 };
+
+export const editProfil = async (token, firstName, lastName) => {
+    const config = {
+        method: "PUT",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            firstName: firstName,
+            lastName: lastName,
+        })
+    };
+
+    try {
+        const response = await fetch("http://localhost:3001/api/v1/user/profile", config);
+        const profile = await response.json();
+        return profile.body;
+    } catch (error) {
+        console.error(error);
+    }
+};

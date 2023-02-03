@@ -8,7 +8,7 @@ const initialState = {
     lastName: null,
     email: null,
     signin: false,
-    accessToken,
+    accessToken
 };
 
 const userSlice = createSlice({
@@ -16,7 +16,7 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         signIn: (state, action) => {
-            // { type: "user/signin", payload: {}}
+            // { type: "user/signIn", payload: {}}
             state.id = action.payload.id;
             state.firstName = action.payload.firstName;
             state.lastName = action.payload.lastName;
@@ -25,7 +25,7 @@ const userSlice = createSlice({
             state.accessToken = sessionStorage.getItem("token");
         },
         signOut: (state) => {
-            // { type: "user/signout", payload: {}}
+            // { type: "user/signOut", payload: {}}
             state.id = null;
             state.firstName = null;
             state.lastName = null;
@@ -34,7 +34,7 @@ const userSlice = createSlice({
             state.accessToken = sessionStorage.removeItem("token");
         },
         editUser: (state, action) => {
-            // { type: "user/edit", payload: {}}
+            // { type: "user/editUser", payload: {}}
             state.firstName = action.payload.firstName;
             state.lastName = action.payload.lastName;
         }
