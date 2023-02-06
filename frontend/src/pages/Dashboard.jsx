@@ -1,11 +1,13 @@
+import { accounts } from "../data/accounts";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { accounts } from "../data/accounts";
-import { addCapitalLetter } from "../business/utils";
 import { editProfil } from "../services/fetchData";
+import { editUser } from "../redux/userSlice";
+import { addCapitalLetter } from "../business/utils";
 import Button from "../components/Button";
 import AccountCard from "../components/AccountCard";
 import ErrorConnection from "../components/ErrorConnection";
+
 
 /**
 * Component for Dashboard page
@@ -21,7 +23,7 @@ const Dashboard = () => {
     const dispatch = useDispatch();
     const transactions = accounts.find(account => account.userId === user.id)?.transactions || [];
 
-    const editUser = (e) => {
+    const editUserName = (e) => {
         e.preventDefault();
         setEditName(!editName);
     };
@@ -79,7 +81,7 @@ const Dashboard = () => {
                         ) : (
                             <>
                                 <h2 className="dashboard__title">Welcome back<br />{user.firstName} {user.lastName}</h2>
-                                <Button label="Edit Name" onClick={editUser}/>
+                                <Button label="Edit Name" onClick={editUserName}/>
                             </>
                         )}
                     </div>
