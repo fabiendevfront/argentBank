@@ -1,35 +1,33 @@
-import Button from "../components/Button";
 import { useState } from "react";
 import { userSignIn, getProfil } from "../services/fetchData";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { signIn } from "../redux/userSlice";
+import { setAccessToken, signIn } from "../redux/userSlice";
+import Button from "../components/Button";
+
 /**
 * Component for Dashboard page
 * @component
 * @returns {JSX.Element}
 */
 const SignInForm = () => {
-    const [email, setEmail] = useState(sessionStorage.getItem("email" || ""));
-    const [password, setPassword] = useState(sessionStorage.getItem("password" || ""));
+    const [email, setEmail] = useState(localStorage.getItem("email" || ""));
+    const [password, setPassword] = useState(localStorage.getItem("password" || ""));
     const [remember, setRemember] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const submit = async (e) => {
         e.preventDefault();
-        if (remember) {
-            sessionStorage.setItem("email", email);
-            sessionStorage.setItem("password", password);
-        } else {
-            sessionStorage.setItem("email", "");
-            sessionStorage.setItem("password", "");
-        }
         const token = await userSignIn(email, password);
+        dispatch(setAccessToken(token));
+
         if (token) {
-            sessionStorage.setItem("token", token);
+            if (remember) {
+                localStorage.setItem("email", email);
+                localStorage.setItem("password", password);
+            }
             const profile = await getProfil(token);
-            console.log(profile);
             dispatch(signIn(profile));
             navigate(`/dashboard/${profile.id}`);
         }

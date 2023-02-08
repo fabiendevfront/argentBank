@@ -8,9 +8,13 @@ import { signOut } from "../redux/userSlice";
  * @returns {JSX.Element}
  */
 const Header = () => {
-    useSelector((state) => console.log(state));
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
+
+    const userSignOut = () => {
+        localStorage.clear();
+        dispatch(signOut(user));
+    };
 
     return (
         <header className="header">
@@ -24,7 +28,7 @@ const Header = () => {
                     { user.signin ? `${user.firstName}` : "Sign In" }
                 </Link>
                 { user.signin ? (
-                    <Link to="/" className="header__link-nav" onClick={() => dispatch(signOut(user))}>
+                    <Link to="/" className="header__link-nav" onClick={userSignOut}>
                         <i className="fa fa-sign-out"></i>
                             Sign Out
                     </Link>

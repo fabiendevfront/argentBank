@@ -18,9 +18,9 @@ const Dashboard = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [editName, setEditName] = useState(false);
+    const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
     const token = user.accessToken;
-    const dispatch = useDispatch();
     const transactions = accounts.find(account => account.userId === user.id)?.transactions || [];
 
     const editUserName = (e) => {
