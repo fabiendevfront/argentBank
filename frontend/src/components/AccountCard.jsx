@@ -19,7 +19,7 @@ const AccountCard = ({ title, amount, desc }) => {
                 <p className="account-item__desc">{desc}</p>
             </div>
             <div className="account-item__cta">
-                <Button label="View transactions" />
+                <Button btnStyle="btn" label="View transactions" />
             </div>
         </div>
     );

@@ -53,7 +53,7 @@ const Dashboard = () => {
                 <div className="dashboard">
                     <div className="dashboard__head">
                         {editName ? (
-                            <>
+                            <div className="dashboard__edit">
                                 <h2 className="dashboard__title">Welcome back</h2>
                                 <form className="dashboard__form">
                                     <div className="dashboard__form-first">
@@ -64,6 +64,7 @@ const Dashboard = () => {
                                             onChange={(e) => setFirstName(e.currentTarget.value)}
                                             placeholder={user.firstName}
                                         />
+                                        <Button btnStyle="btn btn--edit-form" label="Save" onClick={saveEditName} />
                                     </div>
                                     <div className="dashboard__form-last">
                                         <input
@@ -73,15 +74,14 @@ const Dashboard = () => {
                                             onChange={(e) => setLastName(e.currentTarget.value)}
                                             placeholder={user.lastName}
                                         />
-                                        <Button label="Save" onClick={saveEditName} />
-                                        <Button label="Cancel" onClick={cancelEditName} />
+                                        <Button btnStyle="btn btn--edit-form" label="Cancel" onClick={cancelEditName} />
                                     </div>
                                 </form>
-                            </>
+                            </div>
                         ) : (
                             <>
                                 <h2 className="dashboard__title">Welcome back<br />{user.firstName} {user.lastName}</h2>
-                                <Button label="Edit Name" onClick={editUserName}/>
+                                <Button btnStyle="btn" label="Edit Name" onClick={editUserName}/>
                             </>
                         )}
                     </div>

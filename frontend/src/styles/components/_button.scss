@@ -5,7 +5,14 @@
     display: block;
     padding: 8px;
     font-weight: bold;
-    border-color: variables.$primary-color;
     background-color: variables.$primary-color;
     color: variables.$white;
+    cursor: pointer;
+    border-color: variables.$primary-color;
+
+    &--edit-form {
+        background-color: variables.$white;
+        color: variables.$primary-color;
+        border: solid 3px;
+    }
 }

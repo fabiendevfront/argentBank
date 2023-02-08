@@ -50,7 +50,7 @@ const SignInForm = () => {
                     <input type="checkbox" id="remember-me" className="si-form__remember-input" onChange={() => setRemember(!remember)} checked={remember}/>
                     <label htmlFor="remember-me" className="si-form__remember-label">Remember me</label>
                 </div>
-                <Button label="Sign In" onClick={submit} />
+                <Button btnStyle="btn" label="Sign In" onClick={submit} />
             </form>
         </div>
     );

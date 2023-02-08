@@ -16,6 +16,37 @@
         font-weight: bold;
     }
 
+    &__form {
+        display: flex;
+        gap: 20px;
+    }
+
+    &__form-first,
+    &__form-last {
+        display: flex;
+        flex-direction: column;
+
+        .btn {
+            width: 60%;
+        }
+    }
+
+    &__form-first {
+        align-items: end;
+    }
+
+    &__form-last {
+        align-items: start;
+    }
+
+    &__form-input {
+        width: 250px;
+        height: 50px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        padding: 17px;
+    }
+
     .btn {
         padding: 10px;
         font-size: 0.85rem;
