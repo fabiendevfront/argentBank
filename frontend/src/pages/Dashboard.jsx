@@ -8,7 +8,6 @@ import Button from "../components/Button";
 import AccountCard from "../components/AccountCard";
 import ErrorConnection from "../components/ErrorConnection";
 
-
 /**
 * Component for Dashboard page
 * @component

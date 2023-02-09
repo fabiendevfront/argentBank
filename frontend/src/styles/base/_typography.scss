@@ -1,6 +1,10 @@
 @use '../abstracts/variables';
 @use '../abstracts/mixins';
 
+/********************/
+/* TYPOGRAPHY STYLE */
+/********************/
+
 body {
     font-family: variables.$font-default;
     @include mixins.font-size(16px);

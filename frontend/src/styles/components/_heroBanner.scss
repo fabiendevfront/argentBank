@@ -1,6 +1,10 @@
 @use '../abstracts/variables';
 @use '../abstracts/mixins';
 
+/**************************/
+/* HERO BANNER COMPONENT */
+/*************************/
+
 .hero-banner {
     position: relative;
     background: url('../../assets/cover.jpeg') no-repeat center/cover;

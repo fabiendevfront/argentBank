@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 /**
-* Component for Error Connection page
+* Component for Error Connection
 * @component
 * @returns {JSX.Element}
 */

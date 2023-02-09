@@ -1,3 +1,4 @@
+// Mock Data for features cards on Homepage
 export const features = [
     {
         "id": 0,

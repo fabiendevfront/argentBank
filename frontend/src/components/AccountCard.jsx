@@ -2,7 +2,7 @@ import Button from "../components/Button";
 import PropTypes from "prop-types";
 
 /**
- * Component displaying Feature Card
+ * Component displaying Account card
  * @component
  * @param {Object} props - Component's props
  * @param {string} props.title - Title of account

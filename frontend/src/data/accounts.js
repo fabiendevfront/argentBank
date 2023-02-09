@@ -1,3 +1,4 @@
+// Mock data accounts for profile page
 export const accounts = [
     {
         "userId": "63e06b432208762c5cb408c5",

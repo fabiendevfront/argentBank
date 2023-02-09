@@ -6,7 +6,7 @@ import { setAccessToken, signIn } from "../redux/userSlice";
 import Button from "../components/Button";
 
 /**
-* Component for Dashboard page
+* Component for Sign In form
 * @component
 * @returns {JSX.Element}
 */
@@ -19,17 +19,22 @@ const SignInForm = () => {
 
     const submit = async (e) => {
         e.preventDefault();
-        const token = await userSignIn(email, password);
-        dispatch(setAccessToken(token));
 
-        if (token) {
-            if (remember) {
-                localStorage.setItem("email", email);
-                localStorage.setItem("password", password);
+        if (email && password) {
+            const token = await userSignIn(email, password);
+            dispatch(setAccessToken(token));
+
+            if (token) {
+
+                if (remember) {
+                    localStorage.setItem("email", email);
+                    localStorage.setItem("password", password);
+                }
+
+                const profile = await getProfil(token);
+                dispatch(signIn(profile));
+                navigate(`/dashboard/${profile.id}`);
             }
-            const profile = await getProfil(token);
-            dispatch(signIn(profile));
-            navigate(`/dashboard/${profile.id}`);
         }
     };
 

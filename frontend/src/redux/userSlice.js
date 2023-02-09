@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// Init all values of state
 const initialState = {
     id: null,
     firstName: null,
@@ -9,17 +10,16 @@ const initialState = {
     accessToken: null
 };
 
+// Redux slice that represents the user state. Contains initial user state, actions, reducers to update the state with dispatch actions.
 const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
         setAccessToken: (state, action) => {
             // { type: "user/setAcessToken", payload: string}
-            console.log(action);
             state.accessToken = action.payload;
         },
         signIn: (state, action) => {
-            console.log(action);
             // { type: "user/signIn", payload: {}}
             state.id = action.payload.id;
             state.firstName = action.payload.firstName;
@@ -37,7 +37,6 @@ const userSlice = createSlice({
             state.accessToken = null;
         },
         editUser: (state, action) => {
-            console.log(action);
             // { type: "user/editUser", payload: {}}
             state.firstName = action.payload.firstName;
             state.lastName = action.payload.lastName;

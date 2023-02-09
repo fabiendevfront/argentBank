@@ -1,6 +1,10 @@
 @use '../abstracts/variables';
 @use '../abstracts/mixins';
 
+/**************************/
+/* SIGN IN FORM COMPONENT */
+/**************************/
+
 .si-form {
     background-color: variables.$white;
     width: 300px;

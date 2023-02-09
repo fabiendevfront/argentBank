@@ -1,5 +1,5 @@
 /**
-* Component for Homepage
+* Component for Hero Banner
 * @component
 * @returns {JSX.Element}
 */

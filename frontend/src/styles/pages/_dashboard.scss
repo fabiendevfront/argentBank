@@ -1,6 +1,10 @@
 @use '../abstracts/variables';
 @use '../abstracts/mixins';
 
+/*************************/
+/* DASHBOARD PAGE STYLE */
+/***********************/
+
 .dashboard {
     &__head {
         margin-bottom: 2rem;

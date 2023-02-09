@@ -1,6 +1,10 @@
 @use '../abstracts/variables';
 @use '../abstracts/mixins';
 
+/***************************/
+/* ACCOUNT CARD COMPONENT */
+/**************************/
+
 .account-item {
     display: flex;
     flex-direction: column;
