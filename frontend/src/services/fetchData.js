@@ -3,7 +3,7 @@
 * @function
 * @param {string} email - User email
 * @param {string} password - User password
-* @returns {string} token - The token returned by the server
+* @returns {Promise<string>} token - The token returned by the server
 */
 export const userSignIn = async (email, password) => {
     try {
@@ -26,7 +26,7 @@ export const userSignIn = async (email, password) => {
 * Async function that fetch the user profile with a POST request to the server with the token
 * @function
 * @param {string} token - Token of authenticated user
-* @returns {Object} profile.body - User profil
+* @returns {Promise<Object>} profile.body - User profil
 */
 export const getProfil = async (token) => {
     const headers = { Authorization: `Bearer ${token}` };
@@ -49,7 +49,7 @@ export const getProfil = async (token) => {
 * @param {string} token - Token of authenticated user
 * @param {string} firstName - Updated user first name
 * @param {string} lastName - Updated user last name
-* @returns {Object} profile.body - Updated user profil
+* @returns {Promise<Object>} profile.body - Updated user profil
 */
 export const editProfil = async (token, firstName, lastName) => {
     const config = {
