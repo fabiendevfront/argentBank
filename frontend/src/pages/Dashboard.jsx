@@ -22,11 +22,21 @@ const Dashboard = () => {
     const token = user.accessToken;
     const transactions = accounts.find(account => account.userId === user.id)?.transactions || [];
 
+    /**
+    * Handles editing user's first and last name.
+    * @function
+    * @param {Object} e - Event object.
+    */
     const editUserName = (e) => {
         e.preventDefault();
         setEditName(!editName);
     };
 
+    /**
+    * Handles saving changes user's first and last name.
+    * @function
+    * @param {Object} e - Event object.
+    */
     const saveEditName = async (e) => {
         e.preventDefault();
         if (firstName !== "" && lastName !== "" && token) {
@@ -39,6 +49,11 @@ const Dashboard = () => {
         }
     };
 
+    /**
+    * Handles canceling changes user's first and last name.
+    * @function
+    * @param {Object} e - Event object.
+    */
     const cancelEditName = (e) => {
         e.preventDefault();
         if (editName) {
@@ -61,7 +76,7 @@ const Dashboard = () => {
                                             id="firstName"
                                             className="dashboard__form-input"
                                             onChange={(e) => setFirstName(e.currentTarget.value)}
-                                            placeholder={user.firstName}
+                                            defaultValue={user.firstName}
                                         />
                                         <Button btnStyle="btn btn--edit-form" label="Save" onClick={saveEditName} />
                                     </div>
@@ -71,7 +86,7 @@ const Dashboard = () => {
                                             id="lastName"
                                             className="dashboard__form-input"
                                             onChange={(e) => setLastName(e.currentTarget.value)}
-                                            placeholder={user.lastName}
+                                            defaultValue={user.lastName}
                                         />
                                         <Button btnStyle="btn btn--edit-form" label="Cancel" onClick={cancelEditName} />
                                     </div>

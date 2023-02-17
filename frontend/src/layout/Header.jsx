@@ -11,6 +11,7 @@ const Header = () => {
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
+    // Clean local storage and dispatch signOut action for clear user store
     const userSignOut = () => {
         localStorage.clear();
         dispatch(signOut(user));
@@ -23,7 +24,7 @@ const Header = () => {
                 <h1 className="sr-only">Argent Bank</h1>
             </Link>
             <nav className="header__nav">
-                <Link to={user.signin ? `/dashboard/${user.id}` : "/sign-in"} className="header__link-nav">
+                <Link to={user.signin ? "/profile" : "/login"} className="header__link-nav">
                     <i className="fa fa-user-circle header__icon"></i>
                     { user.signin ? `${user.firstName}` : "Sign In" }
                 </Link>

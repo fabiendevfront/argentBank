@@ -13,8 +13,8 @@ const AppRouter = () => {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/dashboard/:id" element={<Dashboard />} />
+            <Route path="/login" element={<SignIn />} />
+            <Route path="/profile" element={<Dashboard />} />
             {/* path="*" if the path does not correspond to any route declared above */}
             <Route path="*" element={<Error404 />} />
         </Routes>

@@ -1,5 +1,6 @@
 /**
  * Add a capital letter to string
+ * @function
  * @param {string} string - The string
  * @returns {string} String with a capital letter added
  */

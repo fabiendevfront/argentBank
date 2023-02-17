@@ -17,6 +17,11 @@ const SignInForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    /**
+    * Handles the form submission for sign in form.
+    *
+    * @param {Event} e - The form submission event.
+    */
     const submit = async (e) => {
         e.preventDefault();
 
@@ -33,7 +38,7 @@ const SignInForm = () => {
 
                 const profile = await getProfil(token);
                 dispatch(signIn(profile));
-                navigate(`/dashboard/${profile.id}`);
+                navigate("/profile");
             }
         }
     };
