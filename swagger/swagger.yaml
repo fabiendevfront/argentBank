@@ -1,0 +1,524 @@
+swagger: '2.0'
+info:
+  title: Bank Argent API documentation
+  description: |-
+    Rajout des endpoints API pour les transactions qui doivent permettre aux utilisateurs de:
+    - de visualiser toutes leurs transactions pour le mois en cours
+    - de visualiser les détails d'une transaction dans une autre vue
+    - d'ajouter, de modifier ou de supprimer des informations sur une transaction
+  version: '1.0.0'
+  termsOfService: 'http://swagger.io/terms/'
+host: localhost:3001
+basePath: /api/v1
+schemes:
+  - http
+paths:
+  /user/login:
+    post:
+      tags:
+        - User Module
+      summary: Login
+      description: API for Login
+      parameters:
+        - in: body
+          name: body
+          description: Login Payload
+          required: true
+          schema:
+            $ref: '#/definitions/Login'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Login Successfully
+          schema:
+            $ref: '#/definitions/LoginResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/signup:
+    post:
+      tags:
+        - User Module
+      summary: Signup
+      description: API for Signup
+      parameters:
+        - in: body
+          name: body
+          description: Signup Payload
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Signup Successfully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/profile:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: User Profile API
+      description: API for fetching a user profile
+      parameters:
+        - type: string
+          in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User profile retrieved successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: User Profile API
+      description: API for updating a user profile
+      parameters:
+        - type: string
+          in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+        - in: body
+          name: body
+          description: Update user profile attributes
+          required: true
+          schema:
+            $ref: '#/definitions/UserProfile'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User profile retrieved successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/accounts:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Account Module
+      summary: All user's accounts
+      description: Getting all user's accounts
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User accounts retrieved successfully
+          schema:
+            $ref: '#/definitions/responseAccounts'
+        '400':
+          description: Accounts not found
+        '500':
+          description: Internal Server Error
+  /user/account/{accountId}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+      - Account Module
+      summary: Selected user's account
+      description: Getting user's account by Id
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
+        - in: path
+          name: accountId
+          description: User's account ID
+          type: integer
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Account retrieved successfully
+          schema:
+            $ref: '#/definitions/responseAccountById'
+        '400':
+          description: Account not found
+        '500':
+          description: Internal Server Error
+  /user/account/{accountId}/transactions/{month}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+      - User Transactions
+      summary: Account transactions by month
+      description: Getting account's transactions getting by month
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: path
+          name: accountId
+          description: User's account ID
+          required: true
+          type: integer
+        - in: path
+          name: month
+          description: Month for getting transactions
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Account's transactions by month retrieved successfully
+          schema:
+            $ref: '#/definitions/responseTransactionsByMonth'
+        '400':
+          description: Account's transactions not found
+        '500':
+          description: Internal Server Error
+  /user/account/{accountId}/transaction/{transactionId}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+      - User Transactions
+      summary: Details for selected transaction
+      description: Getting a single transaction's details by ID
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type: string
+        - in: path
+          name: accountId
+          description: User's account ID
+          type: integer
+          required: true
+        - in: path
+          name: transactionId
+          description: Transaction's ID
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction's details retrieved successfully
+          schema:
+            $ref: '#/definitions/transactionModel'
+        '400':
+          description: Transaction's details not found
+        '500':
+          description: Internal Server Error
+  /user/account/{accountId}/transaction/{transactionsId}/updateCategory:
+    patch:
+      security:
+        - Bearer: []
+      tags:
+      - User Transactions
+      summary: Update category for selected transaction
+      description: Updating selected transaction's category
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
+        - in: path
+          name: accountId
+          description: User's account ID
+          type: integer
+          required: true
+        - in: path
+          name: transactionsId
+          description: Transaction's ID
+          required: true
+          type: integer
+        - in: body
+          name: body
+          required: true
+          description: Update transaction's informations
+          schema:
+              $ref: '#/definitions/categoryModel'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction's category updated successfully
+          schema:
+            $ref: '#/definitions/responseUpdateCategory'
+        '400':
+          description: Bad request - Transaction's category not updated
+        '500':
+          description: Internal Server Error
+  /user/account/{accountId}/transaction/{transactionsId}/updateNotes:
+    patch:
+      security:
+        - Bearer: []
+      tags:
+      - User Transactions
+      summary: Update notes for an selected transaction
+      description: Updating a transaction's notes
+      parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
+        - in: path
+          name: accountId
+          description: User's account ID
+          type: integer
+          required: true
+        - in: path
+          name: transactionsId
+          description: Transaction's ID
+          required: true
+          type: integer
+        - in: body
+          name: body
+          required: true
+          description: Update transaction's informations
+          schema:
+              $ref: '#/definitions/notesModel'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction's notes updated successfully
+          schema:
+            $ref: '#/definitions/responseUpdateNotes'
+        '400':
+          description: Bad request - Transaction's notes not updated
+        '500':
+          description: Internal Server Error
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  User:
+    properties:
+      email:
+        type: string
+        description: user email
+      password:
+        type: string
+        description: user password
+      firstName:
+        type: string
+        description: user first name
+      lastName:
+        type: string
+        description: user last name
+  Login:
+    properties:
+      email:
+        type: string
+        description: user email
+      password:
+        type: string
+        description: user password
+  ApiResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        type: object
+        properties:
+          id:
+            type: string
+          email:
+            type: string
+  LoginResponse:
+    type: object
+    properties:
+      token:
+        type: string
+  UserProfile:
+    type: object
+    properties:
+      firstName:
+        type: string
+      lastName:
+        type: string
+  # ACCOUNTS
+  responseAccounts:
+    type: object
+    properties:
+      status:
+        type: integer
+        example: 200
+        description: Request status
+      message:  
+        type: string
+        example: User accounts retrieved successfully
+        description: Request message
+      account:
+        type: array
+        items:
+          $ref: '#/definitions/accountModel'
+  responseAccountById:
+    type: object
+    properties:
+      status:
+        type: integer
+        example: 200
+        description: Request status
+      message:
+        type: string
+        example: Account retrieved successfully
+        description: Request message
+      body:
+        type: array
+        items:
+          $ref: '#/definitions/accountModel'
+  accountModel:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 2
+        description: Account Id
+      title:
+        type: string
+        example: Argent Bank Checking (x8349)
+        description: Account title
+      amount:
+        type: string
+        example: $184.30
+        description: Account amount
+      desc:
+        type: string
+        example: Available Balance
+        description: Account description
+  # TRANSACTIONS 
+  responseTransactionsByMonth:
+    type: object
+    properties:
+      status:
+        type: integer
+        example: 200
+        description: Request status
+      message:
+        type: string
+        example: Transactions retrieved successfully
+        description: Request message
+      body:
+        type: array
+        items:
+          $ref: '#/definitions/transactionModel'
+  transactionModel:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+        description: Transaction ID
+      date:
+        type: string
+        example: February 16th, 2023
+        description: Transaction date
+      description:
+        type: string
+        example: Golden Sun Bakery
+        description: Transaction description
+      amount:
+        type: number
+        example: 20.00
+        description: Transaction amount
+      balance:
+        type: number
+        example: 2500
+        description: Account balance after transaction
+      transaction type:
+        type: string
+        example: Electronic
+        description: Type of transaction
+      category:
+        type: string
+        example: Food
+        description: Transaction category
+      notes:
+        type: string
+        example: Shopping
+        description: Transaction notes
+  responseUpdateCategory:
+    type: object
+    properties:
+      status:
+        type: integer
+        example: 200
+        description: Request status
+      message:
+        type: string
+        example: Transaction updated successfully
+        description: Request message
+      body:
+        type: array
+        items:
+          $ref: '#/definitions/categoryModel'
+  categoryModel:
+    type: object
+    properties:
+      category:
+        type: string
+        example: food
+        description: Transaction category
+  responseUpdateNotes:
+    type: object
+    properties:
+      status:
+        type: integer
+        example: 200
+        description: Request status
+      message:
+        type: string
+        example: Transaction updated successfully
+        description: Request message
+      body:
+        type: array
+        items:
+          $ref: '#/definitions/notesModel'
+  notesModel:
+    type: object
+    properties:
+      note:
+        type: string
+        example: I invite my mother at restaurant
+        description: Transaction notes
